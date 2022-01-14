@@ -1,1 +1,45 @@
-<p>website-archive-list works!</p>
+<h2>{{ title }}</h2>
+
+<!-- <loading-spinner [is-loading]="isLoading"></loading-spinner> -->
+<div class="row">
+  <div class="col-md-12 d-none d-md-block">
+    <!-- <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th [ngClass]="c.width !== null ? c.width : ''" *ngFor="let c of columns">
+            <div *ngIf="c.isSortable; then sortable else notSortable"></div>
+            <ng-template #sortable>
+              <div (click)="sortBy(c.key)">
+                <span *ngIf="c.title !== null">{{ c.title }}</span>
+                <span *ngIf="c.title.length === 0"><i class="fa fa-{{ c.icon }}"
+                    aria-hidden="true"></i></span>
+                <i *ngIf="query.sortBy === c.key" class="fa" [class.fa-sort-asc]="query.isSortAscending" [class.fa-sort-desc]="!query.isSortAscending"></i>
+              </div>
+            </ng-template>
+            <ng-template #notSortable>
+              <div>
+                <span *ngIf="c.title !== null">{{ c.title }}</span>
+                <span *ngIf="c.title.length === 0"><i class="fa fa-{{ c.icon }}"
+                    aria-hidden="true"></i></span>
+              </div>
+            </ng-template>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr [routerLink]="['/blogs/' + postType + '/', r.url]" *ngFor="let r of queryResult.items" class="link">
+          <td>
+            <span class="title-published" *ngIf="!r.isDraft">{{ r.title }}</span>
+            <span class="title-draft" *ngIf="r.isDraft">{{ r.title }}</span>
+          </td>
+          <td><small>{{ r.category.name }}</small></td>
+          <td class="modified-width"><small>{{ r.created | date: 'dd.MM.yyyy' }}</small></td>
+          <td class="modified-width"><small>{{ r.updated | date: 'dd.MM.yyyy' }}</small></td>
+          <td class="modified-width"><small>{{ r.published | date: 'dd.MM.yyyy' }}</small></td>
+          <td class="published-width" *ngIf="r.isDraft"><i class="fa fa-times" aria-hidden="true"></i></td>
+          <td class="published-width" *ngIf="!r.isDraft"><i class="fa fa-check" aria-hidden="true"></i></td>
+        </tr>
+      </tbody>
+    </table> -->
+  </div>
+</div>

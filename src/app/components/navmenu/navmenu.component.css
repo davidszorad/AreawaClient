@@ -1,0 +1,10 @@
+h1 {
+    display: block;
+    float: left;
+    position: relative;
+    font-weight: 900;
+}
+
+.nav-container {
+    padding-bottom: 3rem;
+}

@@ -2,3 +2,12 @@
 @import "~font-awesome/css/font-awesome.css";
 
 @import "variables.css";
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: var(--font-color);
+    background-color: var(--light-grey-color);
+}
+
+.nav-pills .nav-link {
+    color: var(--font-color);
+}

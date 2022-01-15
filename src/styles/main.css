@@ -11,3 +11,7 @@
 .nav-pills .nav-link {
     color: var(--font-color);
 }
+
+h2 {
+    color: var(--font-color);
+}

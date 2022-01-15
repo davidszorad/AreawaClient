@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SortBy } from 'src/app/models/enums/sort-by';
+import { WebsiteArchiveQuery } from 'src/app/models/wa-query';
 import { WebsiteArchiveService } from 'src/app/services/website-archive.service';
 
 @Component({
@@ -11,19 +13,18 @@ export class WebsiteArchiveListComponent implements OnInit {
   isLoading: boolean = true;
   title: string;
   queryResult: any = {};
-  query: any = {
+  query: WebsiteArchiveQuery = {
     page: 1,
     pageSize: this.PAGE_SIZE,
-    isSortAscending: false,
-    sortBy: 'dateUpdated'
+    isSortDescending: true,
+    sortBy: SortBy.Date
   };
   columns = [
-    { title: 'Name', key: 'name', isSortable: true, width: null, icon: null },
-    { title: 'Description', key: 'description', isSortable: false, width: null, icon: null },
-    { title: 'Category', key: 'category', isSortable: false, width: null, icon: null },
-    { title: 'Created', key: 'dateCreated', isSortable: true, width: 'modified-width', icon: null },
-    { title: 'Updated', key: 'dateUpdated', isSortable: true, width: 'modified-width', icon: null },
-    { title: '', key: 'status', isSortable: true, width: 'status-width', icon: 'globe' }
+    { title: 'Name', key: SortBy.Name, isSortable: true, width: null, icon: null },
+    { title: 'Description', key: SortBy.Default, isSortable: false, width: null, icon: null },
+    { title: 'Category', key: SortBy.Default, isSortable: false, width: null, icon: null },
+    { title: 'Updated', key: SortBy.Date, isSortable: true, width: 'modified-width', icon: null },
+    { title: '', key: SortBy.Status, isSortable: true, width: 'status-width', icon: 'globe' }
   ];
 
   constructor(private waService: WebsiteArchiveService) { 
@@ -49,18 +50,18 @@ export class WebsiteArchiveListComponent implements OnInit {
     this.query = {
       page: 1,
       pageSize: this.PAGE_SIZE,
-      isSortAscending: false,
-      sortBy: 'dateUpdated'
+      isSortDescending: true,
+      sortBy: SortBy.Date
     };
     this.populatePosts();
   }
 
-  sortBy(columnName: string) {
+  sortBy(columnName: SortBy) {
     if (this.query.sortBy === columnName) {
-      this.query.isSortAscending = !this.query.isSortAscending;
+      this.query.isSortDescending = !this.query.isSortDescending;
     } else {
       this.query.sortBy = columnName;
-      this.query.isSortAscending = true;
+      this.query.isSortDescending = true;
     }
     this.populatePosts();
   }

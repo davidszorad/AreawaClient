@@ -12,7 +12,7 @@
               <span *ngIf="c.title !== null">{{ c.title }}</span>
               <span *ngIf="c.title.length === 0"><i class="fa fa-{{ c.icon }}"
                   aria-hidden="true"></i></span>
-              <i *ngIf="query.sortBy === c.key" class="fa" [class.fa-sort-asc]="query.isSortAscending" [class.fa-sort-desc]="!query.isSortAscending"></i>
+              <i *ngIf="query.sortBy === c.key" class="fa" [class.fa-sort-asc]="query.isSortDescending" [class.fa-sort-desc]="!query.isSortDescending"></i>
             </div>
           </ng-template>
           <ng-template #notSortable>
@@ -33,7 +33,6 @@
         </td>
         <td><small>{{ wa.description }}</small></td>
         <td><small>No category</small></td>
-        <td class="modified-width"><small>{{ wa.created | date: 'dd.MM.yyyy' }}</small></td>
         <td class="modified-width"><small>{{ wa.updated | date: 'dd.MM.yyyy' }}</small></td>
         <td class="published-width" *ngIf="wa.status === 3"><i class="fa fa-times" aria-hidden="true"></i></td>
         <td class="published-width" *ngIf="wa.status !== 3"><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -41,3 +40,5 @@
     </tbody>
   </table>
 </div>
+
+<pagination [total-items]="queryResult.allCount" [page]="query.page" [page-size]="query.pageSize" (page-changed)="onPageChange($event)"></pagination>

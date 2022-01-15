@@ -17,6 +17,14 @@ export class WebsiteArchiveListComponent implements OnInit {
     isSortAscending: false,
     sortBy: 'dateUpdated'
   };
+  columns = [
+    { title: 'Name', key: 'name', isSortable: true, width: null, icon: null },
+    { title: 'Description', key: 'description', isSortable: false, width: null, icon: null },
+    { title: 'Category', key: 'category', isSortable: false, width: null, icon: null },
+    { title: 'Created', key: 'dateCreated', isSortable: true, width: 'modified-width', icon: null },
+    { title: 'Updated', key: 'dateUpdated', isSortable: true, width: 'modified-width', icon: null },
+    { title: '', key: 'status', isSortable: true, width: 'status-width', icon: 'globe' }
+  ];
 
   constructor(private waService: WebsiteArchiveService) { 
     this.title = "Website Archive";

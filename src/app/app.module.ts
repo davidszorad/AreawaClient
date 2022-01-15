@@ -14,6 +14,9 @@ import { WebsiteArchiveCategoryEditComponent } from './components/website-archiv
 import { WebsiteArchiveDetailComponent } from './components/website-archive-detail/website-archive-detail.component';
 import { WebsiteArchiveEditComponent } from './components/website-archive-edit/website-archive-edit.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
+import { LoadingSpinnerComponent } from './components/shared/loading-spinner/loading-spinner.component';
+import { PaginationComponent } from './components/shared/pagination/pagination.component';
+import { ToasterComponent } from './components/shared/toaster/toaster.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { NavmenuComponent } from './components/navmenu/navmenu.component';
     WebsiteArchiveCategoryComponent,
     WebsiteArchiveCategoryEditComponent,
     WebsiteArchiveDetailComponent,
-    WebsiteArchiveEditComponent
+    WebsiteArchiveEditComponent,
+    LoadingSpinnerComponent,
+    PaginationComponent,
+    ToasterComponent
   ],
   imports: [
     BrowserModule,

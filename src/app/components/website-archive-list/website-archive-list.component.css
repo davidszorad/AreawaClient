@@ -1,0 +1,8 @@
+table .modified-width {
+    width: 7rem;
+}
+
+table .status-width {
+    width: 3.5rem;
+    min-width: 3.5rem;
+}

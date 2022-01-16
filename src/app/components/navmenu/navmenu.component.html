@@ -1,12 +1,15 @@
-<ul class="sidebar-nav">
-    <li [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact: true}">
-        <a [routerLink]="['/website-archive']">
-            <i class="fa fa-code" aria-hidden="true"></i> <span>Website archives</span>
-        </a>
+<div class="nav-container">
+  <h1>areawa</h1>
+
+  <ul class="nav nav-pills justify-content-end">
+    <li *ngIf="isLogged" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact: true}">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/website-archive']">Website archives</a>
     </li>
-    <li [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact: true}">
-        <a [routerLink]="['/watchdog']">
-            <i class="fa fa-code" aria-hidden="true"></i> <span>Watchdogs</span>
-        </a>
+    <li *ngIf="isLogged" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact: true}">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/watchdog']">Watchdogs</a>
     </li>
-</ul>
+    <li *ngIf="!isLogged" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact: true}">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/login']">Login</a>
+    </li>
+  </ul>
+</div>

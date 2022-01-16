@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -13,6 +15,10 @@ import { WebsiteArchiveCategoryEditComponent } from './components/website-archiv
 import { WebsiteArchiveDetailComponent } from './components/website-archive-detail/website-archive-detail.component';
 import { WebsiteArchiveEditComponent } from './components/website-archive-edit/website-archive-edit.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
+import { LoadingSpinnerComponent } from './components/shared/loading-spinner/loading-spinner.component';
+import { PaginationComponent } from './components/shared/pagination/pagination.component';
+import { ToasterComponent } from './components/shared/toaster/toaster.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +32,21 @@ import { NavmenuComponent } from './components/navmenu/navmenu.component';
     WebsiteArchiveCategoryComponent,
     WebsiteArchiveCategoryEditComponent,
     WebsiteArchiveDetailComponent,
-    WebsiteArchiveEditComponent
+    WebsiteArchiveEditComponent,
+    LoadingSpinnerComponent,
+    PaginationComponent,
+    ToasterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

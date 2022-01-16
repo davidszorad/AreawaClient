@@ -1,0 +1,14 @@
+h1 {
+    display: block;
+    float: left;
+    position: relative;
+    font-weight: 900;
+    background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-container {
+    padding-bottom: 3rem;
+}

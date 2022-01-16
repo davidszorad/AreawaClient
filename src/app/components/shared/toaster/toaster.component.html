@@ -1,0 +1,8 @@
+<div *ngIf="showToaster" class="toaster-box" [@state]="state" (@state.done)="animationDone($event)">
+    <div class="alert alert-{{ alertType }} alert-dismissible show" role="alert">
+        <strong>{{ alertTitle | titlecase }}</strong> {{ alertMessage }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>

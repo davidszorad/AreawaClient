@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 import { WatchdogCreateComponent } from './components/watchdog-create/watchdog-create.component';
 import { WatchdogDetailComponent } from './components/watchdog-detail/watchdog-detail.component';
 import { WatchdogListComponent } from './components/watchdog-list/watchdog-list.component';
@@ -13,6 +14,8 @@ import { WebsiteArchiveListComponent } from './components/website-archive-list/w
 const routes: Routes = [
   { path: '', redirectTo: 'website-archive', pathMatch: 'full' },
 
+  { path: 'login', component: LoginComponent },
+  
   { path: 'website-archive', component: WebsiteArchiveListComponent },
   { path: 'website-archive/:url', component: WebsiteArchiveDetailComponent },
   { path: 'website-archive/create', component: WebsiteArchiveCreateComponent },

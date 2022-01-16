@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -17,6 +18,7 @@ import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { LoadingSpinnerComponent } from './components/shared/loading-spinner/loading-spinner.component';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
 import { ToasterComponent } from './components/shared/toaster/toaster.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,14 @@ import { ToasterComponent } from './components/shared/toaster/toaster.component'
     WebsiteArchiveEditComponent,
     LoadingSpinnerComponent,
     PaginationComponent,
-    ToasterComponent
+    ToasterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     HttpClientModule

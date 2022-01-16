@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SortBy } from 'src/app/models/enums/sort-by';
 import { WebsiteArchiveQuery } from 'src/app/models/wa-query';
+import { WebsiteArchive } from 'src/app/models/website-archive';
 import { WebsiteArchiveService } from 'src/app/services/website-archive.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class WebsiteArchiveListComponent implements OnInit {
   private readonly PAGE_SIZE = 25;
   isLoading: boolean = true;
   title: string;
-  queryResult: any = {};
+  websiteArchives: WebsiteArchive[] = [];
+  allItemsCount: number = 0;
   query: WebsiteArchiveQuery = {
     page: 1,
     pageSize: this.PAGE_SIZE,
@@ -81,7 +83,8 @@ export class WebsiteArchiveListComponent implements OnInit {
     this.scrollToTop();
     this.waService.getList(this.query)
       .subscribe(result => {
-        this.queryResult = result;
+        this.websiteArchives = result.items;
+        this.allItemsCount = result.allCount;
         this.isLoading = false;
       });
   }

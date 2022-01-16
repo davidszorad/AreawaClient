@@ -1,0 +1,22 @@
+<h2>{{ title }}</h2>
+<div *ngIf="!isLogged">
+    <form #f="ngForm" (ngSubmit)="submit()" novalidate>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="login-apikeyinput">API Key</span>
+                </div>
+                <input id="apikeyinput" type="text" class="form-control" [(ngModel)]="apikey" maxlength="60"
+                    name="apikeyinput" placeholder="API Key" aria-label="apikeyinput"
+                    aria-describedby="login-apikeyinput" required #apikeyinput="ngModel">
+            </div>
+            <div class="alert alert-danger" *ngIf="apikeyinput.touched && !apikeyinput.valid">Please fill the API Key.</div>
+        </div>
+    
+        <button class="btn btn-sm btn-outline-primary login-btn" [disabled]="!f.valid"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+    </form>
+</div>
+
+<div *ngIf="isLogged">
+    <button class="btn btn-sm btn-outline-secondary" (click)="logout()">Logout</button>
+</div>

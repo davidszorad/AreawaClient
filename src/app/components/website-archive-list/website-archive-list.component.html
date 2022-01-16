@@ -1,6 +1,5 @@
 <h2>{{ title | lowercase }}</h2>
 
-<loading-spinner [is-loading]="isLoading"></loading-spinner>
 <div class="col">
   <table class="table table-hover">
     <thead class="thead-dark">
@@ -26,7 +25,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr [routerLink]="['/wa/', wa.url]" *ngFor="let wa of queryResult.items" class="link">
+      <tr [routerLink]="['/website-archive/', wa.shortId]" *ngFor="let wa of websiteArchives" class="link">
         <td>
           <span class="title-published" *ngIf="wa.status === 3">{{ wa.name }}</span>
           <span class="title-draft" *ngIf="wa.status !== 3">{{ wa.name }}</span>
@@ -41,4 +40,5 @@
   </table>
 </div>
 
-<pagination [total-items]="queryResult.allCount" [page]="query.page" [page-size]="query.pageSize" (page-changed)="onPageChange($event)"></pagination>
+<pagination [total-items]="allItemsCount" [page]="query.page" [page-size]="query.pageSize" (page-changed)="onPageChange($event)"></pagination>
+<loading-spinner [is-loading]="isLoading"></loading-spinner>

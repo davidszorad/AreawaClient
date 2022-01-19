@@ -7,26 +7,23 @@ on:
 
 
 jobs:
-  build:
+  firebase-deploy:
 
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./functions
 
     strategy:
       matrix:
         node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
       with:
         node-version: ${{ matrix.node-version }}
-    - name: install libraries
-      run: npm install
-      working-directory: ${{env.working-directory}}
-    - name: install firebase
-      run: npm i firebase-tools -g  
-    - name: deploy
-      run: firebase deploy --token ${{ secrets.GCLOUD_TOKEN }}
+    - run: npm install
+    - run: npm run build:prod
+    - uses: w9jds/firebase-action@master
+      with:
+        args: deploy --only hosting
+      env:
+      FIREBASE_TOKEN ${{ secrets.GCLOUD_TOKEN }}

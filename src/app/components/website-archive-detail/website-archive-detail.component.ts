@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArchiveType } from 'src/app/models/enums/archive-tyoe';
 import { WebsiteArchiveSingleQuery } from 'src/app/models/wa-single-query';
@@ -20,9 +21,10 @@ export class WebsiteArchiveDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private waService: WebsiteArchiveService) {
+    private waService: WebsiteArchiveService,
+    private sanitizer: DomSanitizer) {
     route.params.subscribe(p => {
-      this.query.shortId = p['url'];      
+      this.query.shortId = p['url'];
     });
   }
 
@@ -33,6 +35,11 @@ export class WebsiteArchiveDetailComponent implements OnInit {
           if (result.allCount === 1) {
             this.websiteArchive = result.items[0];
             this.title = this.websiteArchive.name;
+            
+            let archiveUrl = this.sanitizer.sanitize(SecurityContext.URL, `https://areawa.blob.core.windows.net/${this.websiteArchive.archiveUrl}#view=fitH`) || '';
+            const iframe =  document.getElementById('preview-window') as HTMLIFrameElement;
+            iframe!.contentWindow!.location.replace(archiveUrl);
+            
             if (this.websiteArchive.archiveType == ArchiveType.Pdf) {
               this.archiveType = 'PDF';
             } else if (this.websiteArchive.archiveType == ArchiveType.Png) {

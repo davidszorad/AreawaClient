@@ -5,6 +5,9 @@
         <h4 class="card-subtitle mb-2 text-muted">website archive</h4>
         <h2>{{ title }}</h2>
         <div class="wa-description">{{ websiteArchive.description }}</div>
+        <div class="content-preview">
+          <iframe id="preview-window" height="100%" width="100%"></iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -24,7 +27,7 @@
         <li class="list-group-item" *ngIf="websiteArchive.status == 5">Status: <span class="badge bg-warning text-dark">Source not found</span></li>
         <li class="list-group-item">Archive type: <b>{{ archiveType }}</b></li>
         <li class="list-group-item">Source: <b><a href="{{websiteArchive.sourceUrl}}" target="_blank" rel="nofollow">Open</a></b></li>
-        <li class="list-group-item">Archive: <b><a href="https://areawa.blob.core.windows.net/{{websiteArchive.archiveUrl}}" target="_blank">Download</a></b></li>
+        <li class="list-group-item">Archive: <b><a href="https://areawa.blob.core.windows.net/{{websiteArchive.archiveUrl}}" target="_blank">Open</a></b></li>
         <li class="list-group-item">Created: <b>{{ websiteArchive.created | date: 'dd.MM.yyyy H:mm' }}</b></li>
         <li class="list-group-item">Updated: <b>{{ websiteArchive.updated | date: 'dd.MM.yyyy H:mm' }}</b></li>
       </ul>

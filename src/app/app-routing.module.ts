@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'website-archive', pathMatch: 'full' },
 
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LoginComponent },
   
   { path: 'website-archive', component: WebsiteArchiveListComponent },
   { path: 'website-archive/:url', component: WebsiteArchiveDetailComponent },

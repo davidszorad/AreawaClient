@@ -1,1 +1,44 @@
-<p>watchdog-list works!</p>
+<h2>{{ title | lowercase }}</h2>
+
+<div class="col">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th [ngClass]="c.width !== null ? c.width : ''" *ngFor="let c of columns">
+          <div *ngIf="c.isSortable; then sortable else notSortable"></div>
+          <ng-template #sortable>
+            <div (click)="sortBy(c.key)">
+              <span *ngIf="c.title !== null">{{ c.title }}</span>
+              <span *ngIf="c.title.length === 0"><i class="fa fa-{{ c.icon }}"
+                  aria-hidden="true"></i></span>
+              <i *ngIf="query.sortBy === c.key" class="fa" [class.fa-sort-asc]="query.isSortDescending" [class.fa-sort-desc]="!query.isSortDescending"></i>
+            </div>
+          </ng-template>
+          <ng-template #notSortable>
+            <div>
+              <span *ngIf="c.title !== null">{{ c.title }}</span>
+              <span *ngIf="c.title.length === 0"><i class="fa fa-{{ c.icon }}"
+                  aria-hidden="true"></i></span>
+            </div>
+          </ng-template>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [routerLink]="['/watchdog/', w.shortId]" *ngFor="let w of watchdogs" class="link">
+        <td>
+          <span class="title-published" *ngIf="w.status === 3">{{ w.name }}</span>
+          <span class="title-draft" *ngIf="w.status !== 3">{{ w.name }}</span>
+        </td>
+        <td><small>{{ w.description }}</small></td>
+        <td><small>No category</small></td>
+        <td class="modified-width"><small>{{ w.updated | date: 'dd.MM.yyyy' }}</small></td>
+        <td class="published-width" *ngIf="w.status === 3"><i class="fa fa-times" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status !== 3"><i class="fa fa-check" aria-hidden="true"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<pagination [total-items]="allItemsCount" [page]="query.page" [page-size]="query.pageSize" (page-changed)="onPageChange($event)"></pagination>
+<loading-spinner [is-loading]="isLoading"></loading-spinner>

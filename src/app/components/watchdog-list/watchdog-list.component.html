@@ -1,1 +1,50 @@
-<p>watchdog-list works!</p>
+<h2>{{ title | lowercase }}</h2>
+
+<div class="col">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th [ngClass]="c.width !== null ? c.width : ''" *ngFor="let c of columns">
+          <div *ngIf="c.isSortable; then sortable else notSortable"></div>
+          <ng-template #sortable>
+            <div (click)="sortBy(c.key)">
+              <span *ngIf="c.title !== null">{{ c.title }}</span>
+              <span *ngIf="c.title.length === 0"><i class="fa fa-{{ c.icon }}"
+                  aria-hidden="true"></i></span>
+              <i *ngIf="query.sortBy === c.key" class="fa" [class.fa-sort-asc]="query.isSortDescending" [class.fa-sort-desc]="!query.isSortDescending"></i>
+            </div>
+          </ng-template>
+          <ng-template #notSortable>
+            <div>
+              <span *ngIf="c.title !== null">{{ c.title }}</span>
+              <span *ngIf="c.title.length === 0"><i class="fa fa-{{ c.icon }}"
+                  aria-hidden="true"></i></span>
+            </div>
+          </ng-template>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [routerLink]="['/watchdog/', w.publicId]" *ngFor="let w of watchdogs" class="link">
+        <td>
+          <span class="title-published" *ngIf="w.status === 3">{{ w.name }}</span>
+          <span class="title-draft" *ngIf="w.status !== 3">{{ w.name }}</span>
+        </td>
+        <td><small>{{ w.url }}</small></td>
+        <td class="modified-width"><small>{{ retryPeriod[w.retryPeriod] }}</small></td>
+        <td class="modified-width"><small>{{ w.scanCount }}</small></td>
+        <td class="modified-width"><small>{{ w.created | date: 'dd.MM.yyyy' }}</small></td>
+        <td class="published-width" *ngIf="w.status === 0 && w.isActive"><i class="fa fa-times" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status === 1 && w.isActive"><i class="fa fa-clock-o" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status === 2 && w.isActive"><i class="fa fa-refresh" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status === 3 && w.isActive"><i class="fa fa-play" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status === 4 && w.isActive"><i class="fa fa-paw" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status === 5 && w.isActive"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="!w.isActive"><i class="fa fa-pause" aria-hidden="true"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<pagination [total-items]="allItemsCount" [page]="query.page" [page-size]="query.pageSize" (page-changed)="onPageChange($event)"></pagination>
+<loading-spinner [is-loading]="isLoading"></loading-spinner>

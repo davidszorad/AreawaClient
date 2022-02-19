@@ -25,16 +25,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr [routerLink]="['/watchdog/', w.shortId]" *ngFor="let w of watchdogs" class="link">
+      <tr [routerLink]="['/watchdog/', w.publicId]" *ngFor="let w of watchdogs" class="link">
         <td>
           <span class="title-published" *ngIf="w.status === 3">{{ w.name }}</span>
           <span class="title-draft" *ngIf="w.status !== 3">{{ w.name }}</span>
         </td>
-        <td><small>{{ w.description }}</small></td>
-        <td><small>No category</small></td>
-        <td class="modified-width"><small>{{ w.updated | date: 'dd.MM.yyyy' }}</small></td>
-        <td class="published-width" *ngIf="w.status === 3"><i class="fa fa-times" aria-hidden="true"></i></td>
-        <td class="published-width" *ngIf="w.status !== 3"><i class="fa fa-check" aria-hidden="true"></i></td>
+        <td><small>{{ w.url }}</small></td>
+        <td class="modified-width"><small>{{ retryPeriod[w.retryPeriod] }}</small></td>
+        <td class="modified-width"><small>{{ w.scanCount }}</small></td>
+        <td class="modified-width"><small>{{ w.created | date: 'dd.MM.yyyy' }}</small></td>
+        <td class="published-width" *ngIf="w.status === 0 && w.isActive"><i class="fa fa-times" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status === 1 && w.isActive"><i class="fa fa-clock-o" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status === 2 && w.isActive"><i class="fa fa-refresh" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status === 3 && w.isActive"><i class="fa fa-play" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status === 4 && w.isActive"><i class="fa fa-paw" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="w.status === 5 && w.isActive"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="!w.isActive"><i class="fa fa-pause" aria-hidden="true"></i></td>
       </tr>
     </tbody>
   </table>

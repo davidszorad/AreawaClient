@@ -33,8 +33,12 @@
         <td><small>{{ wa.description }}</small></td>
         <td><small>No category</small></td>
         <td class="modified-width"><small>{{ wa.updated | date: 'dd.MM.yyyy' }}</small></td>
-        <td class="published-width" *ngIf="wa.status === 3"><i class="fa fa-times" aria-hidden="true"></i></td>
-        <td class="published-width" *ngIf="wa.status !== 3"><i class="fa fa-check" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="wa.status === 0"><i class="fa fa-times" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="wa.status === 1"><i class="fa fa-clock-o" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="wa.status === 2"><i class="fa fa-refresh" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="wa.status === 3"><i class="fa fa-check" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="wa.status === 4"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></td>
+        <td class="published-width" *ngIf="wa.status === 5"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></td>
       </tr>
     </tbody>
   </table>

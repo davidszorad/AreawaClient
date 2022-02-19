@@ -26,7 +26,7 @@ export class WebsiteArchiveListComponent implements OnInit {
     { title: 'Description', key: SortBy.Default, isSortable: false, width: null, icon: null },
     { title: 'Category', key: SortBy.Default, isSortable: false, width: null, icon: null },
     { title: 'Updated', key: SortBy.Date, isSortable: true, width: 'modified-width', icon: null },
-    { title: '', key: SortBy.Status, isSortable: true, width: 'status-width', icon: 'globe' }
+    { title: '', key: SortBy.Status, isSortable: true, width: 'status-width', icon: 'bolt' }
   ];
 
   constructor(private waService: WebsiteArchiveService) { 

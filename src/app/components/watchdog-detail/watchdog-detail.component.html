@@ -21,7 +21,7 @@
               <li class="list-group-item">End selector: <b>{{ watchdog.endSelector }}</b></li>
               <li class="list-group-item">Retry period: <b>{{ retryPeriod[watchdog.retryPeriod] }}</b></li>
               <li class="list-group-item">Scan count: <b>{{ watchdog.scanCount }}</b></li>
-              <li class="list-group-item">Source: <b><a href="{{watchdog.url}}" target="_blank" rel="nofollow">Open</a></b></li>
+              <li class="list-group-item">Source: <b><a href="{{ watchdog.url }}" target="_blank" rel="nofollow">Open</a></b></li>
               <li class="list-group-item">Created: <b>{{ watchdog.created | date: 'dd.MM.yyyy H:mm' }}</b></li>
               <li class="list-group-item">Updated: <b>{{ watchdog.updated | date: 'dd.MM.yyyy H:mm' }}</b></li>
             </ul>

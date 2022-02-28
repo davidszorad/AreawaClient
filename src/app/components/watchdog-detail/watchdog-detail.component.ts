@@ -15,6 +15,7 @@ export class WatchdogDetailComponent implements OnInit {
   title: string = '';
   watchdog: Watchdog = {} as Watchdog;
   query: WatchdogSingleQuery = { publicId: '' };
+  retryPeriod: string[] = ["", "week", "1 month", "3 months", "year"];
 
   constructor(
     private route: ActivatedRoute,

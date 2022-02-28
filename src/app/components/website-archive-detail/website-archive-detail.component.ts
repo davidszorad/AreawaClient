@@ -17,6 +17,7 @@ export class WebsiteArchiveDetailComponent implements OnInit {
   websiteArchive: WebsiteArchive = {} as WebsiteArchive;
   archiveType: string = '';
   query: WebsiteArchiveSingleQuery = { shortId: '' };
+  retryPeriod: string[] = ["", "week", "1 month", "3 months", "year"];
 
   constructor(
     private route: ActivatedRoute,

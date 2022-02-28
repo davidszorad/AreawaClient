@@ -1,1 +1,33 @@
-<p>watchdog-detail works!</p>
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-subtitle mb-2 text-muted">watchdog</h4>
+          <h2>{{ title }}</h2>
+          
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Properties</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{ watchdog.url }}</h6>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngIf="watchdog.status == 0">Status: <span class="badge bg-danger">Error</span></li>
+              <li class="list-group-item" *ngIf="watchdog.status == 1">Status: <span class="badge bg-info text-dark">Pending</span></li>
+              <li class="list-group-item" *ngIf="watchdog.status == 2">Status: <span class="badge bg-primary">Processing</span></li>
+              <li class="list-group-item" *ngIf="watchdog.status == 3">Status: <span class="badge bg-success">Watching</span></li>
+              <li class="list-group-item" *ngIf="watchdog.status == 4">Status: <span class="badge bg-warning text-dark">Source changed</span></li>
+              <li class="list-group-item" *ngIf="watchdog.status == 5">Status: <span class="badge bg-warning text-dark">Source not found</span></li>
+              <li class="list-group-item">Start selector: <b>{{ watchdog.startSelector }}</b></li>
+              <li class="list-group-item">End selector: <b>{{ watchdog.endSelector }}</b></li>
+              <li class="list-group-item">Retry period: <b>{{ retryPeriod[watchdog.retryPeriod] }}</b></li>
+              <li class="list-group-item">Scan count: <b>{{ watchdog.scanCount }}</b></li>
+              <li class="list-group-item">Source: <b><a href="{{ watchdog.url }}" target="_blank" rel="nofollow">Open</a></b></li>
+              <li class="list-group-item">Created: <b>{{ watchdog.created | date: 'dd.MM.yyyy H:mm' }}</b></li>
+              <li class="list-group-item">Updated: <b>{{ watchdog.updated | date: 'dd.MM.yyyy H:mm' }}</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <loading-spinner [is-loading]="isLoading"></loading-spinner>

@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { WatchdogQuery } from '../models/watchdog-query';
+import { WatchdogSingleQuery } from '../models/watchdog-single-query';
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +28,11 @@ export class WatchdogService {
       .pipe(map(res => res));
   }
 
-  // getSingle(filter: WatchdogSingleQuery) : Observable<any> {
-  //   let header = new HttpHeaders().set('X-ApiKey', this.authService.getApiKey());
-  //   const requestOptions = {  headers: header };
+  getSingle(filter: WatchdogSingleQuery) : Observable<any> {
+    let header = new HttpHeaders().set('X-ApiKey', this.authService.getApiKey());
+    const requestOptions = {  headers: header };
 
-  //   return this.http.post(`${this.waEndpoint}/search`, filter, requestOptions)
-  //     .pipe(map(res => res));
-  // }
+    return this.http.post(`${this.wdEndpoint}/search`, filter, requestOptions)
+      .pipe(map(res => res));
+  }
 }
